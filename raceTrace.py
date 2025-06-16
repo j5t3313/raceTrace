@@ -23,7 +23,7 @@ laps.loc[:, 'CumTime']    = laps.groupby('Driver')['LapTimeSec'].cumsum()
 # build an absolute end‐of‐lap timestamp so we can match flags
 laps.loc[:, 'LapEndDate'] = laps['LapStartDate'] + pd.to_timedelta(laps['LapTimeSec'], unit='s')
 
-# identify P1 as baseline
+# identify P1 as reference driver
 winner = session.results.loc[session.results['Position'] == 1, 'Abbreviation'].iloc[0]
 
 # compute deltas
